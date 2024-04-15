@@ -1,0 +1,16 @@
+server:
+  port: 8028
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: api
+          # 匹配后，转发到此域名
+          uri: www.baidu.com
+          # 匹配路径
+          predicates:
+            - Path=/api2/**
+          # 过滤器配置
+          filters:
+            - StripPrefix=1
